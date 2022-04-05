@@ -29,6 +29,7 @@ class Application
         session_start();
         ob_start();
 
+        $this->set_company();
         $this->init_db();
         $this->set_language();
         $this->process_uri();
@@ -282,6 +283,22 @@ class Application
 
         }
 
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function set_company(): void
+    {
+
+        if (!empty($_GET['companyId'])) {
+            validate($_GET['companyId']);
+            Session::set('companyId', $_GET['companyId']);
+        }
+        if (empty($_SESSION['companyId'])) {
+            Session::set('companyId', '1');
+        }
     }
 
 

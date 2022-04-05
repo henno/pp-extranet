@@ -16,7 +16,9 @@ class Controller
 
         // Make controller variables available to view
         extract(get_object_vars($this));
-
+        if ($template == 'master') {
+            $companies = get_all("SELECT * FROM companies");
+        }
         // Load view
         require 'templates/' . $template . '_template.php';
     }

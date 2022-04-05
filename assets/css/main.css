@@ -88,3 +88,8 @@ table {
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
 }
+
+/*container defaults*/
+.container {
+    margin-top: 80px;
+}

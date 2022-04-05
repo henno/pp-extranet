@@ -28,6 +28,9 @@
 </head>
 
 <body>
+<?php
+var_dump($_SESSION);
+?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -40,6 +43,20 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul id="companySelector" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <?php foreach ($companies as $company): ?>
+                            <li><a class="dropdown-item" href="?companyId=<?= $company['companyId'] ?>"><?= $company['companyName'] ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -63,6 +80,8 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js?<?= COMMIT_HASH ?>"></script>
 <script src="assets/js/main.js?<?= COMMIT_HASH ?>"></script>
+<script>
+</script>
 </body>
 </html>
 <?php require 'system/error_translations.php' ?>

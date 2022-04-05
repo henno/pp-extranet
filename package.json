@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bootstrap": "^5",
+    "cypress": "^9.5.3",
     "jquery": "^3.6.0"
   },
   "scripts": {

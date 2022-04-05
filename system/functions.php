@@ -123,6 +123,27 @@ function stop($code, $data = false)
     http_response_code($code);
 
     exit(json_encode($response));
+
+}
+
+function isValidID($id): bool
+{
+    return !!filter_var($id, FILTER_VALIDATE_INT) && $id > 0;
+}
+
+/**
+ * Validates that the parameter is of specified type
+ * @throws Exception if given parameter does not have a valid value
+ */
+function validate($var, $type = IS_ID, $must_not_be_empty = false): bool
+{
+    if (($must_not_be_empty && empty($var)) || ($type == IS_ID && !isValidID($var)
+            || $type == IS_ARRAY && !is_array($var)
+            || $type == IS_STRING && !is_string($var)
+            || $type == IS_0OR1 && !($var === 0 || $var === 1))) {
+        throw new \Exception('Invalid parameter value');
+    }
+    return true;
 }
 
 function send_error_report($exception)
