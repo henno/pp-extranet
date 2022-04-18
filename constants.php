@@ -16,6 +16,8 @@ const GOOGLE_CLIENT_ID = '1000000000000-ffffffffffffffffffffffffffffffff.apps.go
 const GOOGLE_CLIENT_SECRET = 'sssssssssssssssss-ss_SSS';
 const GOOGLE_REDIRECT_URI = 'login_google/callback'; // For G login
 const DEFAULT_TIMEZONE = 'Europe/Tallinn';
+const ENV_DEVELOPMENT = 0;
+const ENV_PRODUCTION = 1;
 
 // Logging events
 const ACTIVITY_LOGIN = 1;

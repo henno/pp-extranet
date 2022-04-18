@@ -87,6 +87,7 @@ class admin extends Controller
 
     function users()
     {
+        throw new \Exception('This is a test');
         $this->users = User::get(null, 'userId DESC');
     }
 
