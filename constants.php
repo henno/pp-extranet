@@ -27,6 +27,3 @@ const IS_INT = 2;
 const IS_0OR1 = 3;
 const IS_ARRAY = 4;
 const IS_STRING = 5;
-
-const ENV_DEVELOPMENT = 0;
-const ENV_PRODUCTION = 1;

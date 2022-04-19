@@ -7,6 +7,8 @@
     "doc": "doc"
   },
   "dependencies": {
+    "@eonasdan/tempus-dominus": "^6.0.0-beta5",
+    "@fortawesome/fontawesome-free": "^6.1.1",
     "bootstrap": "^5",
     "cypress": "^9.5.3",
     "jquery": "^3.6.0"

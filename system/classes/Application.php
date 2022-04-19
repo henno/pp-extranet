@@ -29,8 +29,8 @@ class Application
         session_start();
         ob_start();
 
-        $this->set_company();
         $this->init_db();
+        $this->set_company();
         $this->set_language();
         $this->process_uri();
         $this->update_settings();
@@ -47,8 +47,7 @@ class Application
 
         if (!class_exists($controller_fqn, 1)) {
             error_out("<b>Error:</b>
-				File  <i>controllers/{$this->controller}.php</i> exists but class <i>{$this->controller}</i> does not. You probably copied the file but forgot to rename the class in the copy.",
-                500);
+				File  <i>controllers/{$this->controller}.php</i> exists but class <i>{$this->controller}</i> does not. You probably copied the file but forgot to rename the class in the copy.", 500);
         }
         $controller = new $controller_fqn();
 
@@ -105,8 +104,7 @@ class Application
             if (!method_exists($controller, $controller->action)) {
                 error_out("<b>Error:</b>
 				The action <i>{$controller->controller}::{$controller->action}()</i> does not exist.
-				Open <i>controllers/{$controller->controller}.php</i> and add method <i>{$controller->action}()</i>",
-                    404);
+				Open <i>controllers/{$controller->controller}.php</i> and add method <i>{$controller->action}()</i>", 404);
             }
 
             // Save current url, in case the action redirects to login
@@ -234,10 +232,7 @@ class Application
     private function save_current_url_to_session($controller)
     {
         // In case the user is not logged in but this controller needs auth, redirect user back to this controller after login
-        if ($controller->action != 'your_data'
-            && $controller->controller != 'login_google'
-            && $controller->controller != 'login'
-        ) {
+        if ($controller->action != 'your_data' && $controller->controller != 'login_google' && $controller->controller != 'login') {
             $_SESSION['redirect'] = "$controller->controller/$controller->action" . ($controller->params ? '/' . $controller->params[0] : '');
         }
     }
@@ -296,9 +291,12 @@ class Application
             validate($_GET['companyId']);
             Session::set('companyId', $_GET['companyId']);
         }
-        if (empty($_SESSION['companyId'])) {
+
+        if (!Session::get('companyId')) {
             Session::set('companyId', '1');
         }
+
+        Company::setActive(Session::get('companyId'));
     }
 
 

@@ -1,3 +1,8 @@
+<?php
+
+use App\Session;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,11 +55,13 @@ var_dump($_SESSION);
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        <?= Session::get('activeCompany')['companyName'] ?>
                     </a>
                     <ul id="companySelector" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <?php foreach ($companies as $company): ?>
-                            <li><a class="dropdown-item" href="?companyId=<?= $company['companyId'] ?>"><?= $company['companyName'] ?></a></li>
+                            <li><a class="dropdown-item"
+                                   href="?companyId=<?= $company['companyId'] ?>"><?= $company['companyName'] ?></a>
+                            </li>
                         <?php endforeach ?>
                     </ul>
                 </li>
