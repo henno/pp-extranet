@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.32, for osx10.12 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.6.4-MariaDB, for osx10.16 (x86_64)
 --
--- Host: localhost    Database: halo
+-- Host: localhost    Database: pp_extranet
 -- ------------------------------------------------------
--- Server version	5.7.32
+-- Server version	10.6.4-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE = @@TIME_ZONE */;
 /*!40103 SET TIME_ZONE = '+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0 */;
@@ -30,7 +30,7 @@ CREATE TABLE `activities`
     PRIMARY KEY (`activityId`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 3
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `activityLog`
     `activityId`           int(10) unsigned NOT NULL COMMENT 'Autocreated',
     PRIMARY KEY (`activityLogId`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +73,33 @@ LOCK TABLES `activityLog` WRITE;
 /*!40000 ALTER TABLE `activityLog`
     DISABLE KEYS */;
 /*!40000 ALTER TABLE `activityLog`
+    ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `companies`
+--
+
+DROP TABLE IF EXISTS `companies`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `companies`
+(
+    `companyId`   int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `companyName` varchar(191)     NOT NULL,
+    PRIMARY KEY (`companyId`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `companies`
+--
+
+LOCK TABLES `companies` WRITE;
+/*!40000 ALTER TABLE `companies`
+    DISABLE KEYS */;
+/*!40000 ALTER TABLE `companies`
     ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +121,7 @@ CREATE TABLE `deployments`
     PRIMARY KEY (`deploymentId`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 2
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +148,7 @@ CREATE TABLE `settings`
     `settingValue` varchar(765) DEFAULT NULL,
     PRIMARY KEY (`settingName`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +178,7 @@ CREATE TABLE `translationLanguages`
     `translationLanguageName` varchar(255) NOT NULL,
     PRIMARY KEY (`translationLanguageCode`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,9 +343,9 @@ CREATE TABLE `users`
     `userId`       int(10) unsigned    NOT NULL AUTO_INCREMENT,
     `userName`     varchar(191)        NOT NULL,
     `userEmail`    varchar(191)        NOT NULL,
-    `userIsAdmin`  tinyint(4)          NOT NULL DEFAULT '0',
+    `userIsAdmin`  tinyint(4)          NOT NULL DEFAULT 0,
     `userPassword` varchar(191)        NOT NULL,
-    `userDeleted`  tinyint(1) unsigned NOT NULL DEFAULT '0',
+    `userDeleted`  tinyint(1) unsigned NOT NULL DEFAULT 0,
     PRIMARY KEY (`userId`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 2
@@ -347,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-24 22:34:07
+-- Dump completed on 2022-04-19 15:57:11
